@@ -2,11 +2,26 @@ import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
 import Map from '../Map/map'
 import './movie-map.scss'
+import movies from '../../data/movies.json'
 
 class MovieMap extends Component {
 
 	constructor(props) {
 		super(props)
+
+		let moviesSource = {
+			"type": "geojson",
+			"data": {
+			"type": "FeatureCollection",
+				"features": [{
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [-106.6056, 35.0853]
+					}
+				}]
+			}
+		}
 
 		this.state = {
 			mapboxProperties: {
@@ -16,13 +31,24 @@ class MovieMap extends Component {
 					center: [-106.6056, 35.0853],
 					zoom: 11
 				}
-			}
+			},
+			layers: [
+				{
+			        "id": "movies",
+			        "type": "circle",
+			        "source": moviesSource,
+			        "paint": {
+			        	"circle-radius": 10,
+			        	"circle-color": "#6666ff"
+			        }
+			    }
+			]
 		}
 	}
 
 	render() {
 		return (
-			<Map mapboxProperties={this.state.mapboxProperties} />
+			<Map mapboxProperties={this.state.mapboxProperties} layers={this.state.layers} />
 		)
 	}
 }

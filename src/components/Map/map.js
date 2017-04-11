@@ -18,6 +18,12 @@ class Map extends Component {
 		})
 		mapboxgl.accessToken = this.props.mapboxProperties.mapboxAccessToken
 		this.map = new mapboxgl.Map(this.state.mapSetup)
+
+		this.map.on('load', () => {
+			this.props.layers.map(layer => {
+				this.map.addLayer(layer)
+			})
+		})
 	}
 
 	render() {
