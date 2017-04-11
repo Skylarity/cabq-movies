@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import mapboxgl from 'mapbox-gl'
 import Map from '../Map/map'
 import './movie-map.scss'
 import movies from '../../data/movies.json'
