@@ -1,28 +1,29 @@
 import React, { Component } from 'react'
 import turf from 'turf'
 import Map from '../Map/map'
+import GeoJSON from 'esri-to-geojson'
 import './movie-map.scss'
-import movies from '../../data/movies.json'
+import moviesESRI from '../../data/movies.json'
 
 export default class MovieMap extends Component {
 
 	constructor(props) {
 		super(props)
 
-		// TODO: convert esri to geojson
+		const movies = Object.assign(GeoJSON.fromEsri(moviesESRI), {
+			"crs": {
+				"type": "name",
+				"properties": {
+					"name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+				}
+			}
+		})
+
+		console.log(movies)
 
 		let moviesSource = {
 			"type": "geojson",
-			"data": {
-			"type": "FeatureCollection",
-				"features": [{
-					"type": "Feature",
-					"geometry": {
-						"type": "Point",
-						"coordinates": [-106.6056, 35.0853]
-					}
-				}]
-			}
+			"data": movies
 		}
 
 		this.state = {

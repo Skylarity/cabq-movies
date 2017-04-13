@@ -29,6 +29,7 @@
   "devDependencies": {
     "babel-loader": "^6.4.1",
     "css-loader": "^0.28.0",
+    "esri-to-geojson": "^1.0.3",
     "html-webpack-plugin": "^2.28.0",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
