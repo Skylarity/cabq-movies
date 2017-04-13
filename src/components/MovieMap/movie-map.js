@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import turf from 'turf'
 import Map from '../Map/map'
 import './movie-map.scss'
 import movies from '../../data/movies.json'
 
-class MovieMap extends Component {
+export default class MovieMap extends Component {
 
 	constructor(props) {
 		super(props)
+
+		// TODO: convert esri to geojson
 
 		let moviesSource = {
 			"type": "geojson",
@@ -37,7 +40,7 @@ class MovieMap extends Component {
 			        "type": "circle",
 			        "source": moviesSource,
 			        "paint": {
-			        	"circle-radius": 10,
+			        	"circle-radius": 5,
 			        	"circle-color": "#6666ff"
 			        }
 			    }
@@ -51,5 +54,3 @@ class MovieMap extends Component {
 		)
 	}
 }
-
-export default MovieMap

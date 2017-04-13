@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl'
 import './map.scss'
 
-class Map extends Component {
+export default class Map extends Component {
 
 	constructor(props) {
 		super(props)
@@ -32,5 +32,3 @@ class Map extends Component {
 		)
 	}
 }
-
-export default Map
